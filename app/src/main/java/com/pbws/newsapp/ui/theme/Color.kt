@@ -4,7 +4,8 @@ import androidx.compose.ui.graphics.Color
 val primaryLight = Color(0xFFFF9900)
 val primaryVariantLight = Color(0xE2FF9900) // 0xE2 should represent alpha, which is 226/255
 val secondaryLight = Color(0xFFFF0000)
-val backgroundLight = Color(0xFFF8F8FA)
+val backgroundLight = Color(0xFFF8F8FA) //background: #F8F8FA;
+
 val surfaceLight = Color(0xFFFFFFFF)
 val errorLight = Color(0xFFFF0000)
 val onPrimaryLight = Color(0xFF000000)
