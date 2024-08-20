@@ -1,0 +1,78 @@
+package com.pbws.newsapp.screen.composables
+
+import OrangeColor
+import androidx.compose.foundation.background
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.material3.Tab
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.pbws.domain.model.SourcesItem
+
+@Composable
+fun SourcesTap(
+    sources:List<SourcesItem>?,
+    tabSelectedIndex:Int = 0,
+    onTabSelected:(index:Int)->Unit
+) {
+
+    ScrollableTabRow(
+        selectedTabIndex = tabSelectedIndex,
+        containerColor = Color.Transparent,
+        indicator = {},
+        divider = {},
+        edgePadding =16.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+        sources?.forEachIndexed{index, item ->
+            Tab(
+                selected = tabSelectedIndex==index,
+                modifier = Modifier
+                    .padding(end = 12.dp)
+                    .indication(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = rememberRipple(radius = 18.dp, color = Color.Transparent)
+                    ),
+                onClick = {
+                  onTabSelected(index)
+                }) {
+                item.name?.let {
+                    Text(
+                        text = item.name!!,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = if (tabSelectedIndex == index) Color.White
+                        else MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier
+                            .background(
+                                color = if (tabSelectedIndex == index) OrangeColor else MaterialTheme.colorScheme.surface,
+                                shape = RoundedCornerShape(24.dp)
+                            )
+                            .padding(vertical = 8.dp, horizontal = 18.dp)
+                    )
+                }
+            }
+        }
+
+    }
+}

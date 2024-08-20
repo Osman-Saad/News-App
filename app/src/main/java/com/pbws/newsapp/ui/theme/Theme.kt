@@ -21,6 +21,8 @@ import onErrorDark
 import onErrorLight
 import onPrimaryDark
 import onPrimaryLight
+import onSecondaryDark
+import onSecondaryLight
 import onSurfaceDark
 import onSurfaceLight
 import primaryDark
@@ -30,7 +32,7 @@ import surfaceLight
 import textColorSearchTexDark
 import textColorSearchTextLight
 
-private val DarkColorScheme = darkColorScheme(
+ val DarkColorScheme = darkColorScheme(
     primary = primaryDark,
     background = backgroundDark,
     onTertiary = textColorSearchTexDark,
@@ -40,9 +42,10 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = onSurfaceDark,
     onError = onErrorDark,
     onPrimary = onPrimaryDark,
+     onSecondary = onSecondaryDark
 )
 
-private val LightColorScheme = lightColorScheme(
+ val LightColorScheme = lightColorScheme(
     primary = primaryLight,
     background = backgroundLight,
     surface = surfaceLight,
@@ -52,6 +55,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = onSurfaceLight,
     onError = onErrorLight,
     onPrimary = onPrimaryLight,
+     onSecondary = onSecondaryLight
 )
 
 
