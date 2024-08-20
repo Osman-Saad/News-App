@@ -3,4 +3,17 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
+    id("com.google.dagger.hilt.android") version "2.50" apply false
+    kotlin("plugin.serialization") version "1.9.22"
+
+}
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // other plugins...
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.50")
+    }
 }
